@@ -7,8 +7,9 @@ import {
 } from "./endpoints/produtct";
 import { getUserLogin } from "./endpoints/user-login";
 import { postUserRegister } from "./endpoints/user-register";
+import { getUserMe } from "./endpoints/user-me";
 
-export const API_BASE_URL = "http://localhost:3334";
+export const API_BASE_URL = "http://127.0.0.1:3334";
 
 const Api = {
   public: { postUserRegister, getUserLogin },
@@ -18,6 +19,7 @@ const Api = {
     postProduct,
     deleteProduct,
     getProduct,
+    getUserMe,
   },
 };
 
