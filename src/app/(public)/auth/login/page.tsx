@@ -1,3 +1,9 @@
+import SectionLogin from "@/components/sections/login/login";
+
 export default function PageLogin() {
-  return <main>Login</main>;
+  return (
+    <main>
+      <SectionLogin />
+    </main>
+  );
 }
