@@ -1,9 +1,14 @@
-"use client";
-
-import { Button } from "antd";
-import { useRouter } from "next/navigation";
 import { ReactNode } from "react";
-import Cookies from "js-cookie";
+import StructMenu from "@/components/structs/menu/menu";
+import { AiFillHome } from "react-icons/ai";
+import {
+  FaMoneyBill,
+  FaStoreAlt,
+  FaShoppingCart,
+  FaDollarSign,
+} from "react-icons/fa";
+import { MdInventory2 } from "react-icons/md";
+import { RiSettings4Fill } from "react-icons/ri";
 
 export type DataLayoutDashboard = {
   children: ReactNode;
@@ -11,20 +16,32 @@ export type DataLayoutDashboard = {
 
 export default function LayoutDashboard(data: DataLayoutDashboard) {
   const { children } = data;
-  const router = useRouter();
+
+  const menuOptions = [
+    { title: "Home", link: "", icon: <AiFillHome /> },
+    { title: "Vendas", link: "vendas", icon: <FaMoneyBill /> },
+    { title: "Produtos", link: "produtos", icon: <FaStoreAlt /> },
+    {
+      title: "Marketplace",
+      link: "marketplace",
+      icon: <FaShoppingCart />,
+    },
+    { title: "Finanças", link: "financas", icon: <FaDollarSign /> },
+    {
+      title: "Minhas Compras",
+      link: "minhas-compras",
+      icon: <MdInventory2 />,
+    },
+    {
+      title: "Configurações",
+      link: "configuracoes",
+      icon: <RiSettings4Fill />,
+    },
+  ];
 
   return (
     <main>
-      <Button
-        onClick={() => {
-          Cookies.remove("auth_token");
-          Cookies.remove("token_type");
-          router.replace("auth/login");
-        }}
-      >
-        Logout
-      </Button>
-      {children}
+      <StructMenu options={menuOptions}>{children}</StructMenu>
     </main>
   );
 }
